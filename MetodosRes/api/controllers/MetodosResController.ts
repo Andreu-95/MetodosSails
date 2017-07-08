@@ -1,0 +1,104 @@
+/**
+ * Created by poli_ on 26/6/2017.
+ */
+
+declare let module;
+declare let sails;
+declare let Unknown;
+
+module.exports = {
+  attachmentTest: (req, res) => {
+    res.attachment('test.txt');
+    return res.ok('Attachment Example');
+  },
+
+  badRequestTest: (req, res) => {
+    return res.badRequest('Bad Request Example');
+  },
+
+  clearCookieTest: (req, res) => {
+    res.clearCookie('nombre');
+    return res.ok();
+  },
+
+  cookieTest: (req, res) => {
+    res.cookie('nombre', 'andres', { maxAge: 500000, httpOnly: true });
+    return res.ok();
+  },
+
+  createdTest: (req, res) => {
+    return res.created('Created Example');
+  },
+
+  forbiddenTest: (req, res) => {
+    return res.forbidden('Forbidden Example');
+  },
+
+  getTest: (req, res) => {
+    res.set('Header-Test', 'Example');
+    return res.ok(res.get('Header-Test'));
+  },
+
+  jsonTest: (req, res) => {
+    return res.json({ user: 'andres' });
+  },
+
+  jsonPTest: (req, res) => {
+    return res.jsonp({ user: 'david' });
+  },
+
+  locationTest: (req, res) => {
+    res.location('http://sailsjs.com/');
+    return res.ok();
+  },
+
+  negotiateTest: (req, res) => {
+    Unknown.create({ name: 'fail' }).exec((err, fail) => {
+      if (err) return res.negotiate(err);
+      return res.ok(fail);
+    });
+  },
+
+  notFoundTest: (req, res) => {
+    Unknown.findOne({ name: 'not' }).exec((err, not) => {
+      if (err) return res.negotiate(err);
+      if (!not) return res.notFound('Not Found Example');
+      return res.ok();
+    })
+  },
+
+  okTest: (req, res) => {
+    return res.ok('OK Example');
+  },
+
+  redirectTest: (req, res) => {
+    return res.redirect('http://sailsjs.com/');
+  },
+
+  sendTest: (req, res) => {
+    return res.send(303, [1,2,3,4,5]);
+  },
+
+  serverErrorTest: (req, res) => {
+    return res.serverError('Server Error Example');
+  },
+
+  setTest: (req, res) => {
+    res.set('Set-Header', 'Set Example');
+    return res.ok();
+  },
+
+  statusTest: (req, res) => {
+    res.status(308);
+    return res.send('Status Example');
+  },
+
+  typeTest: (req, res) => {
+    res.type('rtf');
+    return res.ok();
+  },
+
+  viewTest: (req, res) => {
+    return res.view('test');
+  }
+};
