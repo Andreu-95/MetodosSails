@@ -79,5 +79,37 @@ module.exports = {
     },
     viewTest: function (req, res) {
         return res.view('test');
-    }
+    },
+    status: function (req, res) {
+        res.status(505);
+        return res.send("This page will always go to 505");
+    },
+    set: function (req, res) {
+        res.set('holi', 'boli');
+        res.set('xq', 'tan soli');
+        res.set('aqui', 'en la poli');
+        return res.send();
+    },
+    get: function (req, res) {
+        res.get('Connection');
+        return res.send();
+    },
+    cookie: function (req, res) {
+        res.cookie('cookie', 'woof');
+        res.cookie('cookie1', 'arf');
+        return res.send();
+    },
+    clearCookie: function (req, res) {
+        res.clearCookie('cookie');
+        res.clearCookie('cookie1');
+        return res.send();
+    },
+    redirect: function (req, res) {
+        res.redirect('www.google.com');
+        return res.send();
+    },
+    location: function (req, res) {
+        res.location('foo/bar');
+        return res.send();
+    },
 };

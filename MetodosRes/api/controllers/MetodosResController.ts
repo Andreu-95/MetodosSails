@@ -100,5 +100,37 @@ module.exports = {
 
   viewTest: (req, res) => {
     return res.view('test');
-  }
+  },
+  status:(req, res) => {
+    res.status(505);
+    return res.send("This page will always go to 505");
+  },
+  set: (req, res) => {
+    res.set('holi', 'boli');
+    res.set('xq', 'tan soli');
+    res.set('aqui', 'en la poli');
+    return res.send();
+  },
+  get: (req, res) => {
+    res.get('Connection');
+    return res.send();
+  },
+  cookie: (req, res) => {
+    res.cookie('cookie','woof');
+    res.cookie('cookie1','arf');
+    return res.send();
+  },
+  clearCookie: (req, res) => {
+    res.clearCookie('cookie');
+    res.clearCookie('cookie1');
+    return res.send();
+  },
+  redirect: (req, res) => {
+    res.redirect('www.google.com');
+    return res.send();
+  },
+  location: (req, res) => {
+    res.location('foo/bar');
+    return res.send();
+  },
 };
