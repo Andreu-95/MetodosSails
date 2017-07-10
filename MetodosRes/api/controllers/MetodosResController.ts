@@ -133,4 +133,26 @@ module.exports = {
     res.location('foo/bar');
     return res.send();
   },
+  bodyTest: (req, res) => {
+    console.log(req.body)
+  },
+  ipTest: (req, res) => {
+    console.log(req.ip)
+  },
+  pathTest: (req, res) => {
+    console.log(req.path)
+  },
+  paramsTest: (req, res) => {
+    console.log(req.params)
+  },
+  hostTest: (req, res) => {
+    console.log(req.host)
+  },
+  headersTest: (req, res) => {
+    console.log(req.headers)
+  },
+  protocolTest: (req, res) => {
+    console.log(req.protocol)
+  }
+
 };

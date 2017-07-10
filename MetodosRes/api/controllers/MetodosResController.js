@@ -112,4 +112,25 @@ module.exports = {
         res.location('foo/bar');
         return res.send();
     },
+    bodyTest: function (req, res) {
+        console.log(req.body);
+    },
+    ipTest: function (req, res) {
+        console.log(req.ip);
+    },
+    pathTest: function (req, res) {
+        console.log(req.path);
+    },
+    paramsTest: function (req, res) {
+        console.log(req.params);
+    },
+    hostTest: function (req, res) {
+        console.log(req.host);
+    },
+    headersTest: function (req, res) {
+        console.log(req.headers);
+    },
+    protocolTest: function (req, res) {
+        console.log(req.protocol);
+    }
 };
