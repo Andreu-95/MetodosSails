@@ -206,5 +206,19 @@ module.exports = {
     },
     getReqTest: function (req, res) {
         console.log(req.get('myField'));
+    },
+    sockets: function (req, res) {
+        if (req.isSocket) {
+            return res.ok('es un socket');
+        }
+        else {
+            return res.ok('no es socket');
+        }
+    },
+    acceptsCharset: function (req, res) {
+        return res.ok(req.acceptsCharset('utf-8'));
+    },
+    subdomain: function (req, res) {
+        return res.ok(req.subdomains);
     }
 };
