@@ -200,6 +200,42 @@ module.exports = {
     return res.view('./homepage');
   },
 
+  fileTest: (req, res) => {
+    req.file('avatar').upload(function (err, uploadedFiles){
+      if (err) return res.serverError(err);
+      return res.ok('File(s) uploaded successfully!');
+    });
+  },
+
+  allParams: (req, res) => {
+    let values = req.allParams()
+    console.log(values)
+  },
+
+  cookiesReq: (req, res) => {
+    console.log('The unsigned cookies are: \n')
+    console.log(req.cookies)
+  },
+  acceptsLanguage: (req, res) => {
+    if(req.acceptsLanguage('en-US'))
+    {
+      console.log('The client accepts english-US')
+    }
+    else
+    {
+      console.log('The client does not accept english-US')
+    }
+  },
+  ipsTest: (req,res) => {
+    console.log(req.ips)
+  },
+  signedCookiesTest: (req,res)=>{
+    res.cookie('chocolatechip', 'Yummy', {signed:true});
+    console.log(req.signedCookies.chocolatechip)
+  },
+  getReqTest: (req,res) => {
+    console.log(req.get('myField'))
+  }
 
 
 };

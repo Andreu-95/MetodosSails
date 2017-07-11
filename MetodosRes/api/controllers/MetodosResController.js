@@ -174,4 +174,37 @@ module.exports = {
     view: function (req, res) {
         return res.view('./homepage');
     },
+    fileTest: function (req, res) {
+        req.file('avatar').upload(function (err, uploadedFiles) {
+            if (err)
+                return res.serverError(err);
+            return res.ok('File(s) uploaded successfully!');
+        });
+    },
+    allParams: function (req, res) {
+        var values = req.allParams();
+        console.log(values);
+    },
+    cookiesReq: function (req, res) {
+        console.log('The unsigned cookies are: \n');
+        console.log(req.cookies);
+    },
+    acceptsLanguage: function (req, res) {
+        if (req.acceptsLanguage('en-US')) {
+            console.log('The client accepts english-US');
+        }
+        else {
+            console.log('The client does not accept english-US');
+        }
+    },
+    ipsTest: function (req, res) {
+        console.log(req.ips);
+    },
+    signedCookiesTest: function (req, res) {
+        res.cookie('chocolatechip', 'Yummy', { signed: true });
+        console.log(req.signedCookies.chocolatechip);
+    },
+    getReqTest: function (req, res) {
+        console.log(req.get('myField'));
+    }
 };
