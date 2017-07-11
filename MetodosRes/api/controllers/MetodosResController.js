@@ -130,7 +130,48 @@ module.exports = {
     headersTest: function (req, res) {
         console.log(req.headers);
     },
-    protocolTest: function (req, res) {
-        console.log(req.protocol);
-    }
+    metodoTest: function (req, res) {
+        console.log(req.method);
+    },
+    protocolTest: function (req) {
+        switch (req.protocol) {
+            case 'http':
+                // this is an HTTP request
+                console.log('this is HTTP');
+                break;
+            case 'https':
+                // this is a secure HTTPS request
+                console.log('this is HTTPS');
+                break;
+        }
+    },
+    urlTest: function (req, res) {
+        console.log(req.url);
+    },
+    isTest: function (req, res) {
+        console.log(req.is('html'));
+    },
+    acceptsTest: function (req) {
+        req.accepts('json');
+    },
+    ownload: function (req, res) {
+        res.download('./assets/images/logo.jpg');
+        return res.ok('ok');
+    },
+    links: function (req, res) {
+        res.links('');
+        return res.ok('ok');
+    },
+    locals: function (req, res) {
+        res.locals({
+            siteTitle: "Sails"
+        });
+        return res.ok('ok');
+    },
+    render: function (req, res) {
+        return res.render('./homepage');
+    },
+    view: function (req, res) {
+        return res.view('./homepage');
+    },
 };
